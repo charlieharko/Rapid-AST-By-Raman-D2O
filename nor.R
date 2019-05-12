@@ -5,14 +5,14 @@ head(y.all)
 y.all<-melt(y.all,measure.vars = c("DH5a","KanR"),variable.name = "strain",na.rm=TRUE)
 y.cd.ch<-data.frame(y.all,cd.ch=y.all$value/(1+y.all$value))
 head(y.cd.ch)
-write.csv(y.cd.ch,file = "C:/Users/yk/Desktop/normalize/ALL_ACK10MIC/100MIC/K100_normal.csv",row.names = F)
+write.csv(y.cd.ch,file = "normal.csv",row.names = F)
 # y<-read.csv(file.choose(),header = 1)
 # head(y)
 yy.m<-ddply(y.cd.ch,.(time,strain,treat),
             summarise, mean = round(mean(cd.ch), 3),
             sd = round(sd(cd.ch), 3))
 head(yy.m)
-write.csv(yy.m,file = "C:/Users/yk/Desktop/normalize/ALL_ACK10MIC/100MIC/K100_mean.csv",row.names = F)
+write.csv(yy.m,file = "mean.csv",row.names = F)
 ###
 
 y.nor<-read.csv(file.choose(),header = 1)
